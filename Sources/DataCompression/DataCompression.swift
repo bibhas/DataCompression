@@ -95,7 +95,7 @@ public extension Data
     /// - note: Fixed at compression level 5 (best trade off between speed and time)
     func zip() -> Data?
     {
-        let header = Data([0x78, 0x5e])
+        let header = Data([0x78, 0x9c]) // Bibhas: Changed from level 5 to level 6 (zlib default)
         
         let deflated = self.withUnsafeBytes { (sourcePtr: UnsafePointer<UInt8>) -> Data? in
             let config = (operation: COMPRESSION_STREAM_ENCODE, algorithm: COMPRESSION_ZLIB)
